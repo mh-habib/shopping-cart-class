@@ -25,9 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handelPhoneChange(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handelProductChange('phone', false)" class="btn btn-default"><i
+                                 class="fas fa-minus"></i></button>
                            <input id="phoneCount" type="text" class="form-control text-center" value="1">
-                           <button onclick="handelPhoneChange(true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handelProductChange('phone', true)" class="btn btn-default"><i
+                                 class="fas fa-plus"></i></button>
                         </div>
                         <h5 id="phoneTotal">$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -43,9 +45,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handelCaseChange(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handelProductChange('case', false)" class="btn btn-default"><i
+                                 class="fas fa-minus"></i></button>
                            <input id="caseCount" type="text" class="form-control text-center" value="1">
-                           <button onclick="handelCaseChange(true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handelProductChange('case', true)" class="btn btn-default"><i
+                                 class="fas fa-plus"></i></button>
 
                         </div>
                         <h5 id="caseTotal">$59</h5>
@@ -90,34 +94,59 @@
       // })
 
 
-      function handelPhoneChange(isIncrease) {
-         const phoneInput = document.getElementById("phoneCount");
-         const phoneCount = parseInt(phoneInput.value);
-         var phoneNewCount = phoneCount;
+      // function handelPhoneChange(isIncrease) {
+      //    const phoneInput = document.getElementById("phoneCount");
+      //    const phoneCount = parseInt(phoneInput.value);
+      //    var phoneNewCount = phoneCount;
+      //    if (isIncrease == true) {
+      //       phoneNewCount = phoneCount + 1;
+      //    }
+      //    if (isIncrease == false && phoneCount > 0) {
+      //       phoneNewCount = phoneCount - 1;
+      //    }
+      //    phoneInput.value = phoneNewCount;
+      //    const caseTotal = phoneNewCount * 1219;
+      //    document.getElementById("phoneTotal").innerText = '$' + caseTotal;
+      // }
+
+
+      function handelProductChange(product, isIncrease) {
+         const productInput = document.getElementById(product + "Count");
+         const productCount = parseInt(productInput.value);
+         var productNewCount = productCount;
          if (isIncrease == true) {
-            phoneNewCount = phoneCount + 1;
+            productNewCount = productCount + 1;
          }
-         if (isIncrease == false && phoneCount > 0) {
-            phoneNewCount = phoneCount - 1;
+         if (isIncrease == false && productCount > 0) {
+            productNewCount = productCount - 1;
          }
-         phoneInput.value = phoneNewCount;
-         const caseTotal = phoneNewCount * 1219;
-         document.getElementById("phoneTotal").innerText = '$' + caseTotal;
+         productInput.value = productNewCount;
+         let productTotal = 0;
+         if (product == 'phone') {
+            const productTotal = productNewCount * 1219;
+            document.getElementById(product + "Total").innerText = '$' + productTotal;
+         }
+         if (product == 'case') {
+            const productTotal = productNewCount * 59;
+            document.getElementById(product + "Total").innerText = '$' + productTotal;
+         }
       }
-      function handelCaseChange(isIncrease) {
-         const caseInput = document.getElementById("caseCount");
-         const caseCount = parseInt(caseInput.value);
-         var caseNewCount = caseCount;
-         if (isIncrease == true) {
-            caseNewCount = caseCount + 1;
-         }
-         if (isIncrease == false && caseCount > 0) {
-            caseNewCount = caseCount - 1;
-         }
-         caseInput.value = caseNewCount;
-         const caseTotal = caseNewCount * 59;
-         document.getElementById("caseTotal").innerText = '$' + caseTotal;
-      }
+
+
+      // function handelCaseChange(isIncrease) {
+      //    const caseInput = document.getElementById("caseCount");
+      //    const caseCount = parseInt(caseInput.value);
+      //    var caseNewCount = caseCount;
+      //    if (isIncrease == true) {
+      //       caseNewCount = caseCount + 1;
+      //    }
+      //    if (isIncrease == false && caseCount > 0) {
+      //       caseNewCount = caseCount - 1;
+      //    }
+      //    caseInput.value = caseNewCount;
+      //    const caseTotal = caseNewCount * 59;
+      //    document.getElementById("caseTotal").innerText = '$' + caseTotal;
+      // }
 
       // document.getElementById("caseDecrease").addEventListener("click", function () {
       //       const caseInput = document.getElementById("caseCount");
